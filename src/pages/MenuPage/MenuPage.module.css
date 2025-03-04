@@ -17,7 +17,8 @@
 .menu {
     margin-top: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
 }
 

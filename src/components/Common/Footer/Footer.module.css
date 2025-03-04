@@ -1,11 +1,13 @@
 .footer {
     background-color: #333;
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 10px;
+
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    font-size: 12px;
 }
 
 .footer div {

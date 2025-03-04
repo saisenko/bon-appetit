@@ -1,5 +1,7 @@
 .aboutPage {
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .aboutPage h1 {
@@ -16,8 +18,22 @@
     margin-bottom: 40px;
 }
 
+.map {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#map-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
 .commentsSection {
-    margin-top: 20px;
+    border: 2px solid #333;
+    border-radius: 25px;
+    margin-top: 10px;
+    padding: 20px;
 }
 
 .commentsSection h2 {
@@ -65,7 +81,7 @@
     list-style-type: none;
     padding: 0;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .userComment {
