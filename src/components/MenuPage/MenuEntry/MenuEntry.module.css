@@ -1,0 +1,79 @@
+.menuEntryContainer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menuEntryContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menuEntry {
+    padding: 16px;
+}
+
+.menuEntryMainData {
+    display: flex;
+    align-items: center;
+}
+
+.dishImg {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.dishInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.dishName {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+}
+
+.dishPrice {
+    font-size: 1em;
+    color: #555;
+    margin-top: 5px;
+}
+
+.menuEntryIngredients {
+    margin-top: 10px;
+}
+
+.menuEntryIngredients ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menuEntryIngredients li {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.toggleButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.toggleButton:hover {
+    background-color: #555;
+}

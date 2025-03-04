@@ -1,0 +1,18 @@
+.chefsPage {
+    padding: 20px;
+    text-align: center;
+}
+
+.chefsPage h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.chefs {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

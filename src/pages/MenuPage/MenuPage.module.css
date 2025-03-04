@@ -1,0 +1,38 @@
+.backBtn {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.backBtn a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.backBtn a:hover {
+    color: #555;
+}
+
+.menu {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sortButton {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sortButton:hover {
+    background-color: #555;
+}
