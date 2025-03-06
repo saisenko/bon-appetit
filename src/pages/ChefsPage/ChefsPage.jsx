@@ -6,17 +6,17 @@ import ChefCard from '../../components/ChefsPage/ChefCard/ChefCard';
 const chefs = [
     {
         name: "Chef One",
-        img: "/bon-appetit/public/chef.png",
+        img: "/chef.png",
         description: "Master of Italian cuisine, known for his pasta dishes."
     },
     {
         name: "Chef Two",
-        img: "/bon-appetit/public/chef.png",
+        img: "/chef.png",
         description: "Expert in French pastries and desserts."
     },
     {
         name: "Chef Three",
-        img: "/bon-appetit/public/chef.png",
+        img: "/chef.png",
         description: "Specializes in Asian fusion cuisine."
     },
 ];

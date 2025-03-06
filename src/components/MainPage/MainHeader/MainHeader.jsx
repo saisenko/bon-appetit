@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './MainHeader.module.css';
 
 function MainHeader() {
-    const pathToLogo = "bon-appetit/public/chef.png"
+    const pathToLogo = "/chef.png"
     return (
         <header className={styles.header}>
             <div className={styles.logo}>

@@ -5,19 +5,19 @@ import MenuEntry from '../../components/MenuPage/MenuEntry/MenuEntry';
 
 const menu = [
     {
-        img: "/bon-appetit/public/food/beef-rossini.jpg",
+        img: "/food/beef-rossini.jpg",
         name: "Beef Rossini",
         price: 5.00,
         ingredients: ["Beef tournedos", "Foie gras", "Black truffle", "Madeira sauce"]
     },
     {
-        img: "/bon-appetit/public/food/chicken-alfredo.jpg",
+        img: "/food/chicken-alfredo.jpg",
         name: "Chicken Alfredo",
         price: 7.00,
         ingredients: ["Chicken", "Alfredo sauce", "Pasta", "Parmesan cheese"]
     },
     {
-        img: "/bon-appetit/public/food/veggie-delight.jpg",
+        img: "/food/veggie-delight.jpg",
         name: "Veggie Delight",
         price: 3.50,
         ingredients: ["Mixed vegetables", "Tofu", "Soy sauce", "Rice"]
