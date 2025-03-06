@@ -3,21 +3,25 @@ import styles from './MenuPage.module.css';
 import Header from '../../components/Common/Header/Header';
 import MenuEntry from '../../components/MenuPage/MenuEntry/MenuEntry';
 
+import beefRossiniUrl from "../../images/food/beef-rossini.jpg";
+import chickenAlfredoUrl from "../../images/food/chicken-alfredo.jpg";
+import veggieDelightUrl from "../../images/food/veggie-delight.jpg";
+
 const menu = [
     {
-        img: "/food/beef-rossini.jpg",
+        img: beefRossiniUrl,
         name: "Beef Rossini",
         price: 5.00,
         ingredients: ["Beef tournedos", "Foie gras", "Black truffle", "Madeira sauce"]
     },
     {
-        img: "/food/chicken-alfredo.jpg",
+        img: chickenAlfredoUrl,
         name: "Chicken Alfredo",
         price: 7.00,
         ingredients: ["Chicken", "Alfredo sauce", "Pasta", "Parmesan cheese"]
     },
     {
-        img: "/food/veggie-delight.jpg",
+        img: veggieDelightUrl,
         name: "Veggie Delight",
         price: 3.50,
         ingredients: ["Mixed vegetables", "Tofu", "Soy sauce", "Rice"]

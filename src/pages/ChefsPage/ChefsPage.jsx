@@ -3,20 +3,22 @@ import styles from './ChefsPage.module.css';
 import Header from '../../components/Common/Header/Header';
 import ChefCard from '../../components/ChefsPage/ChefCard/ChefCard';
 
+import chefUrl from "../../images/chef.png";
+
 const chefs = [
     {
         name: "Chef One",
-        img: "/chef.png",
+        img: chefUrl,
         description: "Master of Italian cuisine, known for his pasta dishes."
     },
     {
         name: "Chef Two",
-        img: "/chef.png",
+        img: chefUrl,
         description: "Expert in French pastries and desserts."
     },
     {
         name: "Chef Three",
-        img: "/chef.png",
+        img: chefUrl,
         description: "Specializes in Asian fusion cuisine."
     },
 ];
