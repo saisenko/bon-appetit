@@ -43,19 +43,21 @@ function MenuPage() {
     return (
         <div className={styles.menuPage}>
             <Header pageTitle="Our Menu"/>
-            <div className={styles.menu}>
+            <div className={styles.menuPageContainer}>
                 <button className={styles.sortButton} onClick={sortByPrice}>
                     Sort by Price ({isAscending ? "Ascending" : "Descending"})
                 </button>
-                {sortedMenu.map((item, index) => (
-                    <MenuEntry
-                        key={index}
-                        img={item.img}
-                        name={item.name}
-                        price={`$${item.price.toFixed(2)}`}
-                        ingredients={item.ingredients}
-                    />
-                ))}
+                <div className={styles.menu}>
+                    {sortedMenu.map((item, index) => (
+                        <MenuEntry
+                            key={index}
+                            img={item.img}
+                            name={item.name}
+                            price={`$${item.price.toFixed(2)}`}
+                            ingredients={item.ingredients}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
