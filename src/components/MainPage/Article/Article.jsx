@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Article.module.css';
 
-import imgUrl from "../../../images/food/beef-rossini.jpg";
+import imgUrl from "../../../assets/images/food/beef-rossini.jpg";
 
 function Article() {
     return (

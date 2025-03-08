@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './MainHeader.module.css';
 
-import imgUrl from "../../../images/chef.png";
+import imgUrl from "../../../assets/images/chef.png";
 
 function MainHeader() {
     return (

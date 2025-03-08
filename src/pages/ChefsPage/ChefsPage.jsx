@@ -3,7 +3,7 @@ import styles from './ChefsPage.module.css';
 import Header from '../../components/Common/Header/Header';
 import ChefCard from '../../components/ChefsPage/ChefCard/ChefCard';
 
-import chefUrl from "../../images/chef.png";
+import chefUrl from "../../assets/images/chef.png";
 
 const chefs = [
     {
