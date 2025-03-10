@@ -12,7 +12,7 @@ function AboutPage() {
     const [newComment, setNewComment] = useState({ username: "", comment: "" });
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/comments')
+        axios.get('https://master-sai-restaurant.onrender.com/api/comments')
             .then(response => {
                 setComments(response.data);
             })
@@ -23,7 +23,7 @@ function AboutPage() {
 
     const addComment = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/comments', newComment);
+            const response = await axios.post('https://master-sai-restaurant.onrender.com/api/comments', newComment);
             setComments([...comments, response.data]);
             setNewComment({ username: "", comment: "" });
         } catch (error) {
