@@ -25,3 +25,6 @@ dist-ssr
 
 .idea/
 .vscode/
+
+.env
+serviceAccountKey.json
