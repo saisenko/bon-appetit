@@ -1,22 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './AboutPage.module.css';
 import Header from '../../components/Common/Header/Header';
 import UserComment from '../../components/AboutPage/UserComment/UserComment';
 import { AuthContext } from '../../contexts/authContext';
+import axios from 'axios';
 
 function AboutPage() {
     const { currentUser } = useContext(AuthContext);
-    const [nickname, setNickname] = useState('');
-    const [comments, setComments] = useState([
-        { username: "User1", comment: "Great food and service!" },
-        { username: "User2", comment: "Will definitely come back!" }
-    ]);
 
+    const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState({ username: "", comment: "" });
 
-    const addComment = () => {
-        setComments([...comments, { ...newComment, username: nickname || currentUser.email }]);
-        setNewComment({ username: "", comment: "" });
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/comments')
+            .then(response => {
+                setComments(response.data);
+            })
+            .catch(error => {
+                console.error("Failed to fetch comments:", error);
+            });
+    }, []);
+
+    const addComment = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/comments', newComment);
+            setComments([...comments, response.data]);
+            setNewComment({ username: "", comment: "" });
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
     };
 
     return (
@@ -45,10 +57,10 @@ function AboutPage() {
                         <div className={styles.commentForm}>
                             <input
                                 type="text"
-                                placeholder="Your nickname"
-                                value={nickname}
-                                onChange={(e) => setNickname(e.target.value)}
-                            />
+                                placeholder="Your username"
+                                value={newComment.username}
+                                onChange={(e) => setNewComment({ ...newComment, username: e.target.value })}
+                                />
                             <input
                                 type="text"
                                 placeholder="Your comment"

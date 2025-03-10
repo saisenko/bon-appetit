@@ -1,26 +1,25 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 
-import {Link} from "react-router-dom";
+import { createUserWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../../../firebase/firebase-config";
 
-import { doSignInWithEmailAndPassword } from '../../../firebase/auth.js'
+import logoUrl from "/public/master-sai-logo.svg?url";
+import styles from "./register.module.css";
+import {useNavigate} from "react-router-dom";
 
-import logoUrl from '../../../assets/master-sai-logo.svg';
-import styles from "./login.module.css";
+function SignUp() {
+    const navigate = useNavigate();
 
-function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
 
-    const navigate = useNavigate();
-
-    const handleLogin = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         setError(null);
         try {
-            const userCredential = await doSignInWithEmailAndPassword(email, password);
-            console.log('User signed in:', userCredential.user);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            console.log('User created:', userCredential.user);
             // Navigate to another page or update state
             navigate('/bon-appetit/home')
         } catch (error) {
@@ -30,11 +29,11 @@ function Login() {
 
     return (
         <div className={styles.container}>
-            <h1>Welcome back!</h1>
-            <h2>We really missed you</h2>
+            <h1>New here?</h1>
+            <h2>Let's make an account!</h2>
             <div className={styles.formContainer}>
                 <img className={styles.logo} src={logoUrl} alt="Site Logo"/>
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleSignUp}>
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
@@ -44,7 +43,7 @@ function Login() {
                         required
                         id="email"
                     />
-                    <label htmlFor="email">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input
                         type="password"
                         value={password}
@@ -53,13 +52,13 @@ function Login() {
                         required
                         id="password"
                     />
-                    <button type="submit">Login</button>
+                    <p style={{ color: 'red' }}>This is an educational project. DO NOT enter your real credentials</p>
+                    <button type="submit">Sign Up</button>
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                 </form>
-                <p>Don't have an account? <Link to={'/bon-appetit/register'}>Sign Up!</Link></p>
             </div>
         </div>
     );
 }
 
-export default Login;
+export default SignUp;
