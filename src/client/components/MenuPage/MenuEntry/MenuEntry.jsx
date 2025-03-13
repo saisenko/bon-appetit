@@ -20,11 +20,18 @@ function MenuEntry({ img, name, price, ingredients }) {
                 </div>
                 <div className={styles.menuEntryIngredients}>
                     {showIngredients && (
-                        <ul>
-                            {ingredients.map((ingredient, index) => (
-                                <li key={index}>{ingredient}</li>
+                        <div>
+                            {Object.entries(ingredients).map(([ingredientName, details], index) => (
+                                <div key={index}>
+                                    <strong>{ingredientName}</strong>
+                                    <ul>
+                                        {details.map((detail, idx) => (
+                                            <li key={idx}>- {detail}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     )}
                 </div>
             </div>

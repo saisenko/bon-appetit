@@ -3,17 +3,7 @@ import styles from './MenuPage.module.css';
 import Header from '../../components/Common/Header/Header';
 import MenuEntry from '../../components/MenuPage/MenuEntry/MenuEntry';
 
-import beefRossiniUrl from "../../assets/images/food/beef-rossini.jpg";
-import chickenAlfredoUrl from "../../assets/images/food/chicken-alfredo.jpg";
-import veggieDelightUrl from "../../assets/images/food/veggie-delight.jpg";
-
 import axios from 'axios';
-
-const imageMap = {
-    "Beef Rossini": beefRossiniUrl,
-    "Chicken Alfredo": chickenAlfredoUrl,
-    "Veggie Delight": veggieDelightUrl,
-};
 
 function MenuPage() {
     const [menu, setMenu] = useState([]);
@@ -21,7 +11,8 @@ function MenuPage() {
     const [isAscending, setIsAscending] = useState(true);
 
     useEffect(() => {
-        axios.get('https://master-sai-restaurant.onrender.com/api/menu')
+        // axios.get('https://master-sai-restaurant.onrender.com/api/menu')
+        axios.get('http://localhost:5000/api/menu')
         .then(response => {
             setMenu(response.data);
             setSortedMenu(response.data);
@@ -33,7 +24,7 @@ function MenuPage() {
 
     const sortByPrice = () => {
         const sorted = [...menu].sort((a, b) =>
-            isAscending ? a.Price - b.Price : b.Price - a.Price
+            isAscending ? a.DishPrice - b.DishPrice : b.DishPrice - a.DishPrice
         );
         setSortedMenu(sorted);
         setIsAscending(!isAscending);
@@ -50,10 +41,10 @@ function MenuPage() {
                     {sortedMenu.map((item) => (
                         <MenuEntry
                             key={item.id}
-                            img={imageMap[item.DishName.toLowerCase().replace(/ /g, '-')]}
+                            img={item.dishImgUrl}
                             name={item.DishName}
-                            price={`$${item.Price.toFixed(2)}`}
-                            ingredients={item.Ingredients}
+                            price={`$${item.DishPrice}`}
+                            ingredients={item.DishIngredients}
                         />
                     ))}
                 </div>

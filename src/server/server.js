@@ -9,6 +9,11 @@ const db = admin.firestore();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const cloudinary = require('cloudinary').v2;
+const cloudinaryConfig = require('../../cloudinaryConfig.json');
+cloudinary.config(cloudinaryConfig);
+
 app.listen(5000, () => {
     console.log("Server running on port 5000");
 });
@@ -58,7 +63,9 @@ app.get("/api/menu", async (req, res) => {
     const snapshot = await db.collection("menu").get();
     const menu = [];
     snapshot.forEach(doc => {
-        menu.push({ id: doc.id, ...doc.data() });
+        const dishData = doc.data();
+        const dishImgUrl = cloudinary.url(`${doc.id}.webp`, {secure: true}).toString();
+        menu.push({ id: doc.id, ...dishData, dishImgUrl });
     });
     res.json(menu);
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './MainHeader.module.css';
 
-import imgUrl from "../../../assets/images/chef.png";
+import imgUrl from "../../../assets/master-sai-logo.svg";
 
 function MainHeader() {
     return (
