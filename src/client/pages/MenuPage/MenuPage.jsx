@@ -11,8 +11,7 @@ function MenuPage() {
     const [isAscending, setIsAscending] = useState(true);
 
     useEffect(() => {
-        // axios.get('https://master-sai-restaurant.onrender.com/api/menu')
-        axios.get('http://localhost:5000/api/menu')
+        axios.get('https://master-sai-restaurant.onrender.com/api/menu')
         .then(response => {
             setMenu(response.data);
             setSortedMenu(response.data);
