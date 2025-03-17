@@ -7,24 +7,34 @@ import axios from 'axios';
 
 function AboutPage() {
     const { currentUser } = useContext(AuthContext);
-
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState({ username: "", comment: "" });
+    const [displayedComments, setDisplayedComments] = useState([]);
+    const MAX_COMMENTS = 5;
 
     useEffect(() => {
         axios.get('https://master-sai-restaurant.onrender.com/api/comments')
             .then(response => {
-                setComments(response.data);
+                const allComments = response.data;
+                setComments(allComments);
+                setDisplayedComments(getRandomComments(allComments, MAX_COMMENTS));
             })
             .catch(error => {
                 console.error("Failed to fetch comments:", error);
             });
     }, []);
 
+    const getRandomComments = (allComments, count) => {
+        const shuffled = allComments.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    };
+
     const addComment = async () => {
         try {
             const response = await axios.post('https://master-sai-restaurant.onrender.com/api/comments', newComment);
-            setComments([...comments, response.data]);
+            const updatedComments = [...comments, response.data];
+            setComments(updatedComments);
+            setDisplayedComments(getRandomComments(updatedComments, MAX_COMMENTS));
             setNewComment({ username: "", comment: "" });
         } catch (error) {
             console.error('Error adding comment:', error);
@@ -60,7 +70,7 @@ function AboutPage() {
                                 placeholder="Your username"
                                 value={newComment.username}
                                 onChange={(e) => setNewComment({ ...newComment, username: e.target.value })}
-                                />
+                            />
                             <input
                                 type="text"
                                 placeholder="Your comment"
@@ -74,7 +84,7 @@ function AboutPage() {
                         <p>Please log in to leave a comment.</p>
                     )}
                     <div className={styles.commentsList}>
-                        {comments.map((comment, index) => (
+                        {displayedComments.map((comment, index) => (
                             <UserComment
                                 key={index}
                                 username={comment.username}

@@ -1,46 +1,25 @@
+.aboutPageContainer {
+    text-align: center;
+}
+
 .aboutPage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.aboutPage h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    color: #333;
-}
-
-.aboutPage p {
-    font-size: 1.2em;
-    color: #555;
-    text-align: center;
+.aboutInfo {
     margin-bottom: 40px;
 }
 
-.map {
-    margin: 20px auto;
-    text-align: center;
-}
-
-#map-container {
+.map iframe {
     width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
+    height: 450px;
+    border: 0;
 }
 
 .commentsSection {
-    border: 2px solid #333;
-    border-radius: 25px;
-    margin-top: 10px;
-    padding: 20px;
-}
-
-.commentsSection h2 {
-    text-align: center;
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    width: 100%;
 }
 
 .commentForm {
@@ -49,13 +28,11 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
-    max-width: 400px;
-    margin: 0 auto;
 }
 
-.commentForm input,
-.commentForm textarea {
-    width: 100%;
+.commentForm input {
+    width: 80%;
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -78,10 +55,15 @@
 }
 
 .commentsList {
-    list-style-type: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border: #333 2px solid;
+    border-radius: 25px;
+
+    padding: 30px;
 }
 
 .userComment {
@@ -91,25 +73,30 @@
     margin-bottom: 10px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateX(100%);
 }
 
-.userComment strong {
-    font-size: 1.2em;
-    color: #333;
+.userComment.slideIn {
+    animation: slideIn 0.5s forwards;
 }
 
-.userComment p {
-    font-size: 1em;
-    color: #555;
-    margin-top: 5px;
+.userComment.slideOut {
+    animation: slideOut 0.5s forwards 1s;
 }
 
-@media (max-width: 1080px) {
-    .aboutPage {
-        flex-direction: column;
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
+}
 
-    .commentsSection {
-        margin: 8px;
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
     }
 }
