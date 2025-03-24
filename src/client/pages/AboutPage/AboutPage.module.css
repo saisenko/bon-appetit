@@ -1,10 +1,12 @@
 .aboutPageContainer {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .aboutPage {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    align-self: center;
+    text-align: center;
 }
 
 .aboutInfo {
@@ -54,8 +56,14 @@
     background-color: #555;
 }
 
+.commentsDisplay {
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
 .commentsList {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -77,26 +85,4 @@
     max-width: 600px;
     opacity: 0;
     transform: translateX(100%);
-}
-
-.userComment.slideIn {
-    animation: slideIn 0.5s forwards;
-}
-
-.userComment.slideOut {
-    animation: slideOut 0.5s forwards 1s;
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideOut {
-    to {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
 }

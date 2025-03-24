@@ -10,8 +10,10 @@ function MenuPage() {
     const [sortedMenu, setSortedMenu] = useState([]);
     const [isAscending, setIsAscending] = useState(true);
 
+    const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
     useEffect(() => {
-        axios.get('https://master-sai-restaurant.onrender.com/api/menu')
+        axios.get(`${apiEndpoint}/api/menu`)
         .then(response => {
             setMenu(response.data);
             setSortedMenu(response.data);

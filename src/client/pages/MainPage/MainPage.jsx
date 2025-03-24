@@ -1,19 +1,3 @@
-// import React from 'react';
-// import styles from './MainPage.module.css';
-// import Article from '../../components/MainPage/Article/Article';
-//
-// function MainPage() {
-//     return (
-//         <div className={styles.pageContainer}>
-//             <MainHeader />
-//             <Article/>
-//             <Footer />
-//         </div>
-//     );
-// }
-//
-// export default MainPage;
-
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -27,8 +11,10 @@ import styles from './MainPage.module.css';
 function MainPage() {
     const [articles, setArticles] = useState([]);
 
+    const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
     useEffect(() => {
-        axios.get('https://master-sai-restaurant.onrender.com/api/menu')
+        axios.get(`${apiEndpoint}/api/menu`)
             .then(response => {
                 // Assuming the response includes an imageUrl field for each article
                 setArticles(response.data);

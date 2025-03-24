@@ -12,8 +12,10 @@ function AboutPage() {
     const [displayedComments, setDisplayedComments] = useState([]);
     const MAX_COMMENTS = 5;
 
+    const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
+
     useEffect(() => {
-        axios.get('https://master-sai-restaurant.onrender.com/api/comments')
+        axios.get(`${apiEndpoint}/api/comments`)
             .then(response => {
                 const allComments = response.data;
                 setComments(allComments);
@@ -31,7 +33,7 @@ function AboutPage() {
 
     const addComment = async () => {
         try {
-            const response = await axios.post('https://master-sai-restaurant.onrender.com/api/comments', newComment);
+            const response = await axios.post(`${apiEndpoint}/api/comments`, newComment);
             const updatedComments = [...comments, response.data];
             setComments(updatedComments);
             setDisplayedComments(getRandomComments(updatedComments, MAX_COMMENTS));
@@ -62,7 +64,7 @@ function AboutPage() {
                 </div>
 
                 <div className={styles.commentsSection}>
-                    <h2>User Comments</h2>
+                    <h2>Leave Us a Comment</h2>
                     {currentUser ? (
                         <div className={styles.commentForm}>
                             <input
@@ -83,14 +85,17 @@ function AboutPage() {
                     ) : (
                         <p>Please log in to leave a comment.</p>
                     )}
-                    <div className={styles.commentsList}>
-                        {displayedComments.map((comment, index) => (
-                            <UserComment
-                                key={index}
-                                username={comment.username}
-                                comment={comment.comment}
-                            />
-                        ))}
+                    <div className={styles.commentsDisplay}>
+                        <h2>What Others Say About Us</h2>
+                        <div className={styles.commentsList}>
+                            {displayedComments.map((comment, index) => (
+                                <UserComment
+                                    key={index}
+                                    username={comment.username}
+                                    comment={comment.comment}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
