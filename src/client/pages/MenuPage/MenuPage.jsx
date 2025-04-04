@@ -1,53 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MenuPage.module.css';
-import Header from '../../components/Common/Header/Header';
-import MenuEntry from '../../components/MenuPage/MenuEntry/MenuEntry';
 
-import axios from 'axios';
+import Header from '../../components/Common/Header/Header';
+import MenuCategory from '../../components/MenuPage/MenuCategory/MenuCategory';
 
 function MenuPage() {
-    const [menu, setMenu] = useState([]);
-    const [sortedMenu, setSortedMenu] = useState([]);
-    const [isAscending, setIsAscending] = useState(true);
-
-    const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
-
-    useEffect(() => {
-        axios.get(`${apiEndpoint}/api/menu`)
-        .then(response => {
-            setMenu(response.data);
-            setSortedMenu(response.data);
-        })
-        .catch(error => {
-            console.log("Error fetching menu data:", error);
-        });
-    }, []);
-
-    const sortByPrice = () => {
-        const sorted = [...menu].sort((a, b) =>
-            isAscending ? a.DishPrice - b.DishPrice : b.DishPrice - a.DishPrice
-        );
-        setSortedMenu(sorted);
-        setIsAscending(!isAscending);
-    };
-
+    /* categories to put
+    - appetizers & starters
+    - soups & stews
+    - main courses
+    - desserts
+    - other
+    */
     return (
         <div className={styles.menuPage}>
             <Header pageTitle="Our Menu" />
             <div className={styles.menuPageContainer}>
-                <button className={styles.sortButton} onClick={sortByPrice}>
-                    Sort by Price ({isAscending ? "Ascending" : "Descending"})
-                </button>
-                <div className={styles.menu}>
-                    {sortedMenu.map((item) => (
-                        <MenuEntry
-                            key={item.id}
-                            img={item.dishImgUrl}
-                            name={item.DishName}
-                            price={`$${item.DishPrice}`}
-                            ingredients={item.DishIngredients}
-                        />
-                    ))}
+                <div className={styles.menuCategories}>
+                    <MenuCategory categoryTitleName={"🥗 Appetizers & Starters 🥗"} redirectTo={"/bon-appetit/menu/appetizers-n-starters"}/>
+                    <MenuCategory categoryTitleName={"🍲 Soups & Stews 🍲"} redirectTo={"/bon-appetit/menu/soups-n-stews"}/>
+                    <MenuCategory categoryTitleName={"🍽️ Main Courses 🍽️"} redirectTo={"/bon-appetit/menu/main-courses"}/>
+                    <MenuCategory categoryTitleName={"🧁 Desserts 🧁"} redirectTo={"/bon-appetit/menu/desserts"}/>
+                    <MenuCategory categoryTitleName={"🫓 Other 🫓"} redirectTo={"/bon-appetit/menu/other"}/>
                 </div>
             </div>
         </div>

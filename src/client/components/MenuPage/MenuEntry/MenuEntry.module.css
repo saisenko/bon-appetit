@@ -8,6 +8,7 @@
     width: 80%; /* Adjust width as needed */
     max-width: 600px;
     margin: 20px auto; /* Center the entry */
+    background-color: white;
 }
 
 .menuEntryContainer:hover {

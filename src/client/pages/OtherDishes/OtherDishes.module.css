@@ -1,0 +1,32 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+
+    background-image: url('/page-backgrounds/other.png');
+    background-repeat: repeat-y;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sortButton {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sortButton:hover {
+    background-color: #555;
+}

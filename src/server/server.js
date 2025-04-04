@@ -69,3 +69,16 @@ app.get("/api/menu", async (req, res) => {
     });
     res.json(menu);
 });
+
+app.get("/api/menu/:category", async (req, res) => {
+    const menuCategoryReq = req.params.category;
+    
+    const snapshot = await db.collection("menu").where("DishCategory", "==", `${menuCategoryReq}`).get();
+    const menu = [];
+    snapshot.forEach(doc => {
+        const dishData = doc.data();
+        const dishImgUrl = cloudinary.url(`${doc.id}.webp`, {secure: true}).toString();
+        menu.push({ id: doc.id, ...dishData, dishImgUrl });
+    });
+    res.json(menu);
+});
